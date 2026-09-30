@@ -1,0 +1,46 @@
+name: Batlet
+options:
+  bundleIdPrefix: com.batlet
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    ENABLE_HARDENED_RUNTIME: NO
+
+targets:
+  Batlet:
+    type: application
+    platform: macOS
+    sources:
+      - path: Batlet
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.batlet.app
+        PRODUCT_NAME: Batlet
+        INFOPLIST_FILE: Batlet/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        ENABLE_APP_SANDBOX: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        COMBINE_HIDPI_IMAGES: YES
+
+  BatletTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: BatletTests
+    dependencies:
+      - target: Batlet
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.batlet.app.tests
+        GENERATE_INFOPLIST_FILE: YES
